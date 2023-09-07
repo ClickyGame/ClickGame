@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="icon" href="https://cdn.freebiesupply.com/logos/large/2x/windows-cursor-logo-png-transparent.png">
+<title>Clicky Game</title>
+<button type="button" id="clickButton" class="a">Click Me!</button>
+<p class="counter">Clicks: <a id="number">0</a></p>
+<script type="text/javascript">
+var number = 0;
+
+function initiateClicks() {
+    var numberStr = localStorage.getItem("number");
+    if(numberStr == undefined) {
+        localStorage.setItem("number", 0);
+        number = 0;
+    }else{
+        number = parseInt(numberStr);   
+    }
+    document.getElementById("number").innerHTML = number;
+}
+function doClick() {
+    number += 1;
+	 localStorage.setItem("number", number);
+    document.getElementById("number").innerHTML = number;
+}
+
+document.getElementById("clickButton").onclick = doClick;
+initiateClicks();
+</script>
+<style>
+button.a {
+position: relative;
+top: 300px;
+left: 625px;
+height: 50px;
+width: 100px;
+transition-duration: 1s;
+border-width: 3px;
+}
+p.counter {
+text-align: center;
+position: relative;
+color: lime;
+font-size: 60px;
+top: 100px;
+}
+button:hover {
+background-color: black;
+color: white;
+border-color: white;
+border-width: 5px;
+}
+body {
+background-color: black;
+}
+</style>
+</head>
+</html>
